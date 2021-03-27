@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="INFO"> 	
+	<!-- Pour le ThreadContext (equivalent du MDC de Log4j1= Mapped Diagnostic Context, une HashMap et NDC une stack),
+		%X doit être associé à la clé d'une information stockée entre {}
+		%X donne toute la HashMap
+		%x donne toute la pile/stack
+	 -->
+	 
+	 <appenders>
+	  		<Console name="Console" target="SYSTEM_OUT">
+	  		 	<PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg - From MDC = %X{UserName} %n %throwable"/>
+	   		</Console> 
+	 </appenders>
+	 <Loggers>	    	  	
+	  	<Root level="ERROR">
+	   		<AppenderRef ref="Console" />
+	  	</Root>
+	  </Loggers>
+</configuration>

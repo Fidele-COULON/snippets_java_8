@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="INFO">
+
+	<!--  
+    Accept means that no other Filters should be called and the event should progress.
+    Deny means the event should be immediately ignored and control should be returned to the caller.
+    Neutral indicates the event should be passed to other Filters. If there are no other Filters the event will be processed.
+     -->
+     
+	<MapFilter onMatch="DENY" onMismatch="NEUTRAL" operator="or">
+	    	<KeyValuePair key="userId" value="User1"/>
+	    	<KeyValuePair key="eventId" value="Logout"/>
+	</MapFilter>
+	
+	<DynamicThresholdFilter key="loginId" defaultThreshold="INFO" onMatch="DENY" onMismatch="NEUTRAL">
+	    	<KeyValuePair key="User1" value="DEBUG"/>
+	</DynamicThresholdFilter>
+	  	
+	<appenders>
+	  		<Console name="Console" target="SYSTEM_OUT">
+	  		 	<PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg - From MDC = %X{UserName} %throwable %n"/>
+	            	<Filters>
+	                	<!-- .* n'importe quel caractère (.) 0 ou n fois -->
+			        	<RegexFilter regex=".*User1" onMatch="ACCEPT" onMismatch="DENY"/> 
+			        
+			        	<!-- Now allow warn, error and fatal messages -->
+			    		<ThresholdFilter level="warn"  onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+			        	<ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+			        	<ThresholdFilter level="fatal" onMatch="ACCEPT" onMismatch="NEUTRAL"/> 
+			
+			        	<!-- This filter denies info/debug/trace 
+			        	<ThresholdFilter level="ALL"   onMatch="DENY" onMismatch="DENY"/> -->
+	 			  </Filters>
+	  		</Console>
+	  
+	  		<File name="FILE_LOG" fileName="F:\\Logs\\POC_Log4j2.log">
+				<PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg - From MDC = %X{UserName} %n"/>
+	  		</File>
+	 </appenders>
+	 
+	 <Loggers>
+	    	  	
+	  	<Root level="all">
+	   		<AppenderRef ref="Console" />
+	  	</Root>
+	  	
+	</Loggers>
+</configuration>
