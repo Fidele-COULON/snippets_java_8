@@ -2,6 +2,7 @@
 package fr.fidtec.appenders;
 
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -53,12 +54,12 @@ public class MyCustomImpl extends AbstractAppender {
 
     }
     
-  //  @Override
+    @Override
     public void append(LogEvent event) {
     	readLock.lock();
         try {    
         	final byte[] bytes = getLayout().toByteArray(event);
-            System.out.print("LOG: " +new String(bytes, "UTF-8")); 	// here I am printing logs into console
+            System.out.print("LOG: " + new String(bytes, StandardCharsets.UTF_8)); 	// here I am printing logs into console
         } catch (Exception ex) {
         	if (!ignoreExceptions()) {
         		throw new AppenderLoggingException(ex);
