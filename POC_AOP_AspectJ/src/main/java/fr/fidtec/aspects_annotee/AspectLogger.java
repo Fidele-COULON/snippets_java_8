@@ -1,4 +1,4 @@
-package fr.fidtec.aspects;
+package fr.fidtec.aspects_annotee;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -6,7 +6,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
-//execution d'AspectJ sur les méthodes main uniquement (pas de conf dans le fichier aop.xml car annotations 
+// execution d'AspectJ sur les méthodes main uniquement (doit aussi être configuré dans le fichier de conf aop.xml) 
+// Les annotations ne sont qu'une simplification de déclaration 
 
 @Aspect
 public class AspectLogger {

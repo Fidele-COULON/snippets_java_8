@@ -89,7 +89,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>fr.fidtec.beans.RunMe</mainClass> <!--  mvn exec:java CAR AOP ne fonctionne pas en Run\Java Application -->
+                    <mainClass>fr.fidtec.beans.RunMe</mainClass> <!--  mvn exec:java CAR AOP ne fonctionne pas en Run\Java Application si pas de mvn install préalable -->
                 </configuration>
           </plugin>
             

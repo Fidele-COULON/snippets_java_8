@@ -3,6 +3,7 @@
         <aspect name="fr.fidtec.aspects.CompteurAspect"/>
         <weaver options="-verbose -showWeaveInfo">
             <include within="fr.fidtec.aspects.*"/>
+             <include within="fr.fidtec.aspects_annotee.*"/>
         </weaver>
     </aspects>
 </aspectj>
