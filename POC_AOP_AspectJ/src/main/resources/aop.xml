@@ -1,0 +1,8 @@
+<aspectj>
+    <aspects>
+        <aspect name="fr.fidtec.aspects.CompteurAspect"/>
+        <weaver options="-verbose -showWeaveInfo">
+            <include within="fr.fidtec.aspects.*"/>
+        </weaver>
+    </aspects>
+</aspectj>

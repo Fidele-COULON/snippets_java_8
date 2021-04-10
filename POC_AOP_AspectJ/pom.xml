@@ -1,0 +1,98 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>fr.fidtec</groupId>
+  <artifactId>POC_AOP_AspectJ</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>${project.artifactId}-${project.version}</name>
+  
+  <url>http://www.fidtec.fr</url>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+	<aspectj.version>1.8.13</aspectj.version> 
+  </properties>
+
+  <dependencies>
+    
+    <dependency>
+       <groupId>org.aspectj</groupId>
+       <artifactId>aspectjrt</artifactId>
+       <version>${aspectj.version}</version>
+    </dependency>
+    
+    <dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjweaver</artifactId>
+	    <version>${aspectj.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+  </dependencies>
+  <build>
+      <plugins>
+      
+         <plugin>
+             <groupId>org.codehaus.mojo</groupId>
+             <artifactId>aspectj-maven-plugin</artifactId>
+             <version>1.11</version>
+   
+             <executions>
+                 <execution>
+                     <goals>
+                         <goal>compile</goal> <!-- use this goal to weave all your main classes -->
+                         <goal>test-compile</goal> <!-- use this goal to weave all your test classes -->
+                     </goals>
+                 </execution>
+             </executions>
+             <configuration>
+                 <complianceLevel>${maven.compiler.source}</complianceLevel>
+                 <source>${maven.compiler.source}</source>
+                 <target>${maven.compiler.target}</target>
+                 <showWeaveInfo>true</showWeaveInfo>
+        		 <verbose>true</verbose>
+        		 <Xlint>ignore</Xlint>
+        		 <encoding>UTF-8 </encoding>
+             </configuration>
+             
+         </plugin>
+         
+         <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-compiler-plugin</artifactId>
+             <version>2.5.1</version>
+             <configuration>
+                 <source>${maven.compiler.source}</source>
+                 <target>${maven.compiler.target}</target>
+             </configuration>
+         </plugin>
+         
+         <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>fr.fidtec.beans.RunMe</mainClass> <!--  mvn exec:java CAR AOP ne fonctionne pas en Run\Java Application -->
+                </configuration>
+          </plugin>
+            
+     </plugins>
+ </build>
+</project>
