@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-	<bean id="customerService" class="fr.fidtec.POC_AOP.CustomerService">
+	<bean id="customerService" class="fr.fidtec.POC_AOP_With_Springframework.CustomerService">
 		<property name="name" value="Fidele COULON" />
 		<property name="url" value="http://www.fidtec.fr" />
 	</bean>
 	
-	<bean id="hijackBeforeMethodBean" class="fr.fidtec.POC_AOP.HijackBeforeMethod" />
-	<bean id="hijackAfterMethodBean" class="fr.fidtec.POC_AOP.HijackAfterMethod" />
+	<bean id="hijackBeforeMethodBean" class="fr.fidtec.POC_AOP_With_Springframework.HijackBeforeMethod" />
+	<bean id="hijackAfterMethodBean" class="fr.fidtec.POC_AOP_With_Springframework.HijackAfterMethod" />
 
 	<bean id="customerServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
 

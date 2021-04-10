@@ -1,4 +1,4 @@
-package fr.fidtec.POC_AOP;
+package fr.fidtec.POC_AOP_With_Springframework;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,16 +13,16 @@ public class RunMe {
 		
 			CustomerService cust = (CustomerService) appContext.getBean("customerServiceProxy");
 	
-			System.out.println("*************************");
+			System.out.println("*************************"); //NOSONAR
 			cust.printName();
-			System.out.println("*************************");
+			System.out.println("*************************"); //NOSONAR
 			cust.printURL();
-			System.out.println("*************************");
+			System.out.println("*************************"); //NOSONAR
 		
 			cust.printThrowException();
 			
 		} catch (Exception e) {
-			System.out.println("Erreur : " + e.getMessage());
+			System.out.println("Erreur : " + e.getMessage()); //NOSONAR
 		} finally {
 			((ClassPathXmlApplicationContext) appContext).close();
 		}

@@ -1,4 +1,4 @@
-package fr.fidtec.POC_AOP;
+package fr.fidtec.POC_AOP_With_Springframework;
 
 import java.lang.reflect.Method;
 
