@@ -1,46 +1,60 @@
 package fr.fidtec.parsers;
 import java.io.File;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPathConstants;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class LecteurSimpleXML {
 
+	// On récupère une instance de DocumentBuilderFactory qui se chargera de nous fournir un parser
+	private static final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			
 	public static void main(String[] args) {
-		// Nous r�cup�rons une instance de factory qui se chargera de nous fournir un parseur
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
 	    try {
 
-	         // Cr�ation de notre parseur via la factory
+	         // Creation du parseur via la factory
 	         DocumentBuilder builder = factory.newDocumentBuilder();
 	         
-	         // parsing de notre fichier via un objet File et r�cup�ration d'un objet Document
-	         // Ce dernier repr�sente la hi�rarchie d'objet cr��e pendant le parsing
-             //  File fileXML = new File("test.xml");
-	         File fileXML = new File("src/main/resources/test.xml");
-	       
+	         // 1. Parsing du fichier via un objet File 
+	         // On recupere un objet Document qui represente la hierarchie d'objet cree
+	         File fileXML = new File("src/main/resources/test.xml");	       
 	         Document xml = builder.parse(fileXML);
 
-	         // Syntaxe d'un Parsing d'un XML via une URL
+	         // 2. Syntaxe d'un Parsing d'un XML via une URL
              // String uri = "http://www.w3schools.com/xml/note.xml";
 	         // Document xml = builder.parse(uri);
 
-	         // Syntaxe d'un Parsing d'un XML via un flux
+	         // 3. Syntaxe d'un Parsing d'un XML via un flux
 	         // InputStream is = new FileInputStream(fileXML);
 	         // Document xml = builder.parse(is);
 
-	         // Via notre objet Document, nous pouvons r�cup�rer un objet Element
-	         // Ce dernier repr�sente un �l�ment XML qui sera la racine du document (via getDocumentElement)
+	         // Via l'objet Document, nous pouvons r�cup�rer un objet Element
+	         // Ce dernier represente un element XML qui sera la racine du document (via getDocumentElement)
 	         Element root = xml.getDocumentElement();
-	         System.out.println(root.getNodeName());
+	         System.out.println("RootNodeName = " + root.getNodeName());
+	         
+	         NodeList nodes = root.getChildNodes();
+	         
+	         System.out.println("nb noeuds : " + nodes.getLength());
+	         for(int i=0; i < nodes.getLength(); i++) {
+	        	 System.out.println(i + "-" + nodes.item(i).getNodeName() + "=" + nodes.item(i).getTextContent());	 
+	         }
+	         
+	       
   	   
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
 	}
+	
 }	
 	
