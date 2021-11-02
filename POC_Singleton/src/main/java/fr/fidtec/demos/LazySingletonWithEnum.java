@@ -2,10 +2,10 @@ package fr.fidtec.demos;
 
 public enum LazySingletonWithEnum {
 	
-	INSTANCE;
+	INSTANCE; // Thread-Safe
 
     private LazySingletonWithEnum() {
-        System.out.println("Création du LazySingletonEnum");
+        System.out.println("Creation du LazySingletonEnum"); // NOSONAR
     }
 
     public static LazySingletonWithEnum getInstance() {
@@ -13,6 +13,6 @@ public enum LazySingletonWithEnum {
     }
 
     public String getMessage() {
-        return String.format("Reference : %s", super.toString());
-    }
+	      return "Hello World !"; // NOSONAR
+	}
 }

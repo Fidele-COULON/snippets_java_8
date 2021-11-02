@@ -2,10 +2,10 @@ package fr.fidtec.demos;
 
 public class DoubleCheckingLockingSingleton {
 	
-	private static volatile DoubleCheckingLockingSingleton instance;
+	private static volatile DoubleCheckingLockingSingleton instance; // NOSONAR
     
 	private DoubleCheckingLockingSingleton() {
-        System.out.println("Création du Singleton au premier appel");
+        System.out.println("Creation du Singleton au premier appel"); // NOSONAR
     }
 	
 	public static DoubleCheckingLockingSingleton getInstance() {
@@ -20,4 +20,8 @@ public class DoubleCheckingLockingSingleton {
         
         return instance;
     }
+	
+	public String getMessage() {
+	      return "Hello World !"; // NOSONAR
+	}
 }

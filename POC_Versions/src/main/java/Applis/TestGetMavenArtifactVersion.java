@@ -13,7 +13,7 @@ public class TestGetMavenArtifactVersion {
 		// Ne fonctionne pas dans un JAR car le POM n'est pas trouvé
 		System.out.println("From pom.xml : " + new MavenInformations().toString());
 		
-		// Fonctionne dans un JAR mail il faut précisé le chemin dans le JAR
+		// Fonctionne dans un JAR mais il faut préciser le chemin dans le JAR
 		System.out.println("From pom.properties : " + new MavenInformations("/META-INF/maven/fr.fidtec/POC_Versions").toString());
       	        
 	}
