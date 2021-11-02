@@ -34,7 +34,7 @@ public class RulesTU_POC_Test {
 	  System.out.println("After");
   }
   
-  // Lancé en tout dernier (avant toutes les autres)
+  // Lancé en tout dernier (après toutes les autres)
   @AfterClass
   public static void tearDown() {
 	  System.out.println("AfterClass");
