@@ -5,9 +5,9 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 import org.apache.log4j.MDC; // MDC = Mapped Diagnostic Context
 
+// https://logging.apache.org/log4j/2.x/manual/migration.html
 public class UseBridgeLog4j1 {
 
-	// private final static String LOG4J_CONFIGFILE = "c:\\\\temp\\\\fws.properties";
 	private static final String LOG4J_CONFIGFILE = "file:src/main/resources/fws.properties";
 	
 	public static void main(String[] args) throws IOException {
