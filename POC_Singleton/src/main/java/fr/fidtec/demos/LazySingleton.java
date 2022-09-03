@@ -21,4 +21,8 @@ public class LazySingleton {
 	      return "Hello World !"; // NOSONAR
 	}
 	
+    @Override
+	public Object clone() throws CloneNotSupportedException { //NOSONAR
+	   throw new CloneNotSupportedException();
+	}
 }

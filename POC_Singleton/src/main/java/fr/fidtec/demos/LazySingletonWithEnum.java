@@ -15,4 +15,5 @@ public enum LazySingletonWithEnum {
     public String getMessage() {
 	      return "Hello World !"; // NOSONAR
 	}
+    
 }
