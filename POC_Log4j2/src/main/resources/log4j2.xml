@@ -55,6 +55,10 @@
       		<AppenderRef ref="Console"/> 
     	</Logger>
     	
+    	<Logger name="fr.fidtec.Log4j2.Log4j2Perf" level="ERROR" additivity="false">  
+      		<AppenderRef ref="Console"/>
+    	</Logger>
+    	
          <!--  The Root element is a standard logger that outputs all messages
     	       if you don’t provide one, it will automatically be configured by default
     	       with a Console appender and the ERROR log level.  -->

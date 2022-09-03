@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="debug"> 
+
+  <Properties>
+    <Property name="baseDir">f:/logs</Property>
+    <Property name="version">1</Property>
+    <Property name="country">fr</Property>
+  </Properties>
+  
+	<Appenders>
+    
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg %n %throwable"/>
+        </Console>
+   
+		<RollingFile name="RollingFile" fileName="${baseDir}/application_${env:environment}_${version}_${country}_${ctx:os}.log"
+		                                filePattern="${baseDir}/application_${env:environment}_${version}_${country}_${ctx:os}.%i.log.gz" ignoreExceptions="false">
+		  <PatternLayout>
+		    <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n</Pattern>
+		  </PatternLayout>
+		  <Policies>
+		    <SizeBasedTriggeringPolicy size="10MB" />
+		  </Policies>
+		  <DefaultRolloverStrategy max="5" />
+		</RollingFile>
+
+    </Appenders>
+    
+    
+    <Loggers>
+    		
+    	 <Logger name="fr.fidtec.Log4j2" level="DEBUG" additivity="true">  
+      		<AppenderRef ref="RollingFile"/> 
+    	</Logger>
+    	    	
+        <Root level="DEBUG">
+            <AppenderRef ref="Console"/>           
+        </Root>
+        
+    </Loggers>
+    
+</Configuration>

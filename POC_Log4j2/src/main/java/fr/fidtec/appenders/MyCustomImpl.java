@@ -12,6 +12,7 @@ import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.appender.AbstractAppender;
 import org.apache.logging.log4j.core.appender.AppenderLoggingException;
+import org.apache.logging.log4j.core.config.Property;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.config.plugins.PluginAttribute;
 import org.apache.logging.log4j.core.config.plugins.PluginElement;
@@ -28,7 +29,7 @@ public class MyCustomImpl extends AbstractAppender {
     private final Lock readLock = rwLock.readLock();
 
     protected MyCustomImpl(String name, Filter filter, Layout<? extends Serializable> layout, final boolean ignoreExceptions) {
-        super(name, filter, layout, ignoreExceptions);
+        super(name, filter, layout, ignoreExceptions, Property.EMPTY_ARRAY);
     }
     
     @PluginFactory
@@ -54,7 +55,7 @@ public class MyCustomImpl extends AbstractAppender {
 
     }
     
-    @Override
+    // @Override
     public void append(LogEvent event) {
     	readLock.lock();
         try {    

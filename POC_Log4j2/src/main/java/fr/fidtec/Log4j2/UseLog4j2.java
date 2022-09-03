@@ -28,6 +28,8 @@ public class UseLog4j2 {
 		    
         ThreadContext.put("UserName", "Fidele COULON"); //NOSONAR
         
+  
+                
         LOGGER.trace("Hello World !!!! en mode trace - loginId=User1");		
         LOGGER.trace("Hello World !!!! en mode trace - loginId=User2");
 		
