@@ -1,13 +1,22 @@
 package fr.fidtec.bridgelog4j;
 
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.MDC; // MDC = Mapped Diagnostic Context
 
-public class UseLog4j1 {
+public class UseBridgeLog4j1 {
 
-	private static final Logger LOGGER = Logger.getLogger(UseLog4j1.class);
+	// private final static String LOG4J_CONFIGFILE = "c:\\\\temp\\\\fws.properties";
+	private static final String LOG4J_CONFIGFILE = "file:src/main/resources/fws.properties";
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		
+		// -Dlog4j1.compatibility="true" -Dlog4j.configuration=file:src/main/resources/fws.properties 
+		System.setProperty("log4j1.compatibility", "true");
+		System.setProperty("log4j.configuration", LOG4J_CONFIGFILE);
+		
+		final Logger LOGGER = Logger.getLogger(UseBridgeLog4j1.class);
 		
 		LOGGER.info("Hello World !!!! en mode info sans MDC");
 		
