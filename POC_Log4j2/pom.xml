@@ -12,7 +12,6 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <slf4j.version>1.8.0-beta2</slf4j.version>
     <log4j.version>2.12.4</log4j.version>
     <maven.compiler.source>1.8</maven.compiler.source>
 	<maven.compiler.target>1.8</maven.compiler.target>
@@ -20,11 +19,21 @@
 
   <dependencies>
   
+  	<!-- tirés par log4j-slf4j-impl
+	<dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+    </dependency>
+    -->
+    
+    <!-- tirés par log4j-core
   	<dependency>
  	    <groupId>org.apache.logging.log4j</groupId>
 	    <artifactId>log4j-api</artifactId>
 	    <version>${log4j.version}</version>
 	</dependency>
+	-->
 	
   	<dependency>
  	    <groupId>org.apache.logging.log4j</groupId>
@@ -32,12 +41,15 @@
 	    <version>${log4j.version}</version>
 	</dependency>
 	
-	<dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-api</artifactId>
-        <version>${slf4j.version}</version>
-    </dependency>
-
+	<!--  The Log4j 2 SLF4J Binding allows applications coded to the SLF4J API to use Log4j 2 as the implementation.
+	      https://logging.apache.org/log4j/2.x/log4j-slf4j-impl/index.html
+	      
+	      A ne pas confondre avec Log4j 2 to SLF4J Adapter
+	      The Log4j 2 to SLF4J Adapter allows applications coded to the Log4j 2 API to be routed to SLF4J
+	      https://logging.apache.org/log4j/log4j-2.2/log4j-to-slf4j/index.html
+	      
+	      Il ne faut pas utiliser les 2 ensemble (boucle infinie)
+	 -->
 	<dependency>
     	<groupId>org.apache.logging.log4j</groupId>
     	<artifactId>log4j-slf4j-impl</artifactId>
