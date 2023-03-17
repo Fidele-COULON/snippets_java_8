@@ -27,9 +27,10 @@ public class UseLog4j2 {
         context.setConfigLocation(file.toURI());
 		    
         ThreadContext.put("UserName", "Fidele COULON"); //NOSONAR
+           
+        System.out.println("Class " + UseLog4j2.class + " " + LOGGER.isDebugEnabled());
+        System.out.println(LOGGER.isInfoEnabled());
         
-  
-                
         LOGGER.trace("Hello World !!!! en mode trace - loginId=User1");		
         LOGGER.trace("Hello World !!!! en mode trace - loginId=User2");
 		

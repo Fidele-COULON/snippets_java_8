@@ -45,8 +45,8 @@
     	<!-- An other logger catch logs from fr.fidtec.Log4j2.UseLog4j2 logger
     		 if AppenderRef is omitted, Root AppenderRef is used per heritage
     		 additivity="false" : so logs don't fire to default Root logger (Default : true) 		 
-    	-->
-        <Logger name="fr.fidtec.Log4j2.UseLog4j2" level="DEBUG" additivity="false">  
+    	--> 
+        <Logger name="fr.fidtec.Log4j2.UseLog4j2" level="INFO" additivity="false">  
       		<AppenderRef ref="FILE_LOG"/>
     	</Logger>
     	
@@ -62,7 +62,7 @@
          <!--  The Root element is a standard logger that outputs all messages
     	       if you don’t provide one, it will automatically be configured by default
     	       with a Console appender and the ERROR log level.  -->
-        <Root level="DEBUG">
+        <Root level="ERROR">
             <AppenderRef ref="Console"/>           
         </Root>
         

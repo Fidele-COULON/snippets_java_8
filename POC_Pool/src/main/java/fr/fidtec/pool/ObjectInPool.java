@@ -1,18 +1,12 @@
 package fr.fidtec.pool;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@AllArgsConstructor
+@Getter
+@Setter
 public class ObjectInPool {
 	private String Instance = null;
-
-	public String getInstance() {
-		return Instance;
-	}
-
-	public void setInstance(String instance) {
-		Instance = instance;
-	}
-
-	public ObjectInPool(String instance) {
-		super();
-		Instance = instance;
-	}
 }
