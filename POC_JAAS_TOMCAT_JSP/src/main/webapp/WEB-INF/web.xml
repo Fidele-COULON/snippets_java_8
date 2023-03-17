@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
+  <display-name>POC_JAAS_TOMCAT</display-name>
+  <servlet>
+    <description></description>
+    <display-name>HelloWorld</display-name>
+    <servlet-name>HelloWorld</servlet-name>
+    <servlet-class>fr.fidtec.servlets.HelloWorld</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloWorld</servlet-name>
+    <url-pattern>/HelloWorld</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminAccess</display-name>
+    <servlet-name>AdminAccess</servlet-name>
+    <servlet-class>fr.fidtec.servlets.AdminAccess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminAccess</servlet-name>
+    <url-pattern>/AdminAccess</url-pattern>
+  </servlet-mapping>
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+      <form-login-page>/Login.jsp</form-login-page>
+      <form-error-page>/Error.jsp</form-error-page>
+    </form-login-config>
+  </login-config>
+  <security-role>
+    <description>admin role</description>
+    <role-name>admins</role-name>
+  </security-role>
+  <security-role>
+    <description>user role</description>
+    <role-name>users</role-name>
+  </security-role>
+  <security-constraint>
+    <display-name>Sécurité sous Tomcat</display-name>
+    <web-resource-collection>
+      <web-resource-name>Simple Web HelloWorld Servlet</web-resource-name>
+      <url-pattern>/HelloWorld</url-pattern>
+      <url-pattern>/ShowInformations</url-pattern>
+      <url-pattern>/SendRedirect</url-pattern>
+      <url-pattern>/Forward</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>users</role-name>
+      <role-name>admins</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  <security-constraint>
+    <display-name>Sécurité Admin sous Tomcat</display-name>
+    <web-resource-collection>
+      <web-resource-name>Admin Servlet</web-resource-name>
+      <url-pattern>/AdminAccess</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admins</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>fr.fidtec.servlets.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ShowInformations</display-name>
+    <servlet-name>ShowInformations</servlet-name>
+    <servlet-class>fr.fidtec.servlets.ShowInformations</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowInformations</servlet-name>
+    <url-pattern>/ShowInformations</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>SendRedirect</display-name>
+    <servlet-name>SendRedirect</servlet-name>
+    <servlet-class>fr.fidtec.servlets.SendRedirect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SendRedirect</servlet-name>
+    <url-pattern>/SendRedirect</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>Forward</display-name>
+    <servlet-name>Forward</servlet-name>
+    <servlet-class>fr.fidtec.servlets.Forward</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Forward</servlet-name>
+    <url-pattern>/Forward</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+    <filter-name>logFilterSimple</filter-name>
+    <filter-class>fr.fidtec.filters.LogFilterSimple</filter-class>
+  </filter>
+    <filter-mapping>
+    <filter-name>logFilterSimple</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+   <filter>
+    <filter-name>logFilterSimple2</filter-name>
+    <filter-class>fr.fidtec.filters.LogFilterSimple2</filter-class>
+  </filter>
+    <filter-mapping>
+    <filter-name>logFilterSimple2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+</web-app>
