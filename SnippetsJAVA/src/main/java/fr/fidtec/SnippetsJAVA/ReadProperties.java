@@ -101,7 +101,7 @@ public class ReadProperties {
             
             showPropertiesWithResourceBundle(NOM_FICHIER_SIMPLE_PROPERTIES_SANS_EXTENSION);
                  
-            Locale.setDefault(new Locale("en", "US")); // langue, pays
+            Locale.setDefault(new Locale("en", "US", "CDN")); // langue, pays
             showPropertiesWithResourceBundle(NOM_FICHIER_SIMPLE_PROPERTIES_SANS_EXTENSION);
             
          } catch (Exception e) {
