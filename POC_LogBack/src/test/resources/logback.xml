@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!--  By default, it writes all log messages in DEBUG level or higher to standard out -->
+<configuration>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+	<appender name="LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	 	<file>F:\Logs\app.log</file>
+	 	 
+	    <!-- daily rollover -->
+	    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+	        <fileNamePattern>F:\Logs\app.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+	        
+	        <!-- 30 days to keep -->
+	        <maxHistory>30</maxHistory>
+	        
+	        <!-- each archived file, size max 10MB -->
+        	<maxFileSize>1MB</maxFileSize>
+        
+	        <!-- total size of all archive files, if total size > 20GB, it will delete old archived file -->
+            <totalSizeCap>20GB</totalSizeCap>
+	    </rollingPolicy>
+	
+	    <encoder>
+	        <pattern>${HOSTNAME} %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+	    </encoder>
+	</appender>
+
+  <root level="debug">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="LOG_FILE" />
+  </root>
+</configuration>
