@@ -34,7 +34,7 @@
         </Console>
  
         <File name="FILE_LOG" fileName="F:\\Logs\\POC_Log4j2.log">
-			<PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg %n"/>
+			<PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg %n %throwable"/>
     	</File>
    
     </Appenders>
@@ -48,8 +48,9 @@
     	--> 
         <Logger name="fr.fidtec.Log4j2.UseLog4j2" level="INFO" additivity="false">  
       		<AppenderRef ref="FILE_LOG"/>
+      		<AppenderRef ref="Console"/>
     	</Logger>
-    	
+    	   	
     	 <Logger name="fr.fidtec.Log4j2.ReadLog4JConfig" level="DEBUG" additivity="false">  
       		<AppenderRef ref="FILE_LOG"/>
       		<AppenderRef ref="Console"/> 
