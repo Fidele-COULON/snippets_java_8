@@ -1,89 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
-  <display-name>POC_JAAS_TOMCAT</display-name>
-  
-  <servlet>
-    <description></description>
-    <display-name>HelloWorld</display-name>
-    <servlet-name>HelloWorld</servlet-name>
-    <servlet-class>fr.fidtec.servlets.HelloWorld</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>HelloWorld</servlet-name>
-    <url-pattern>/HelloWorld</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <description></description>
-    <display-name>AdminAccess</display-name>
-    <servlet-name>AdminAccess</servlet-name>
-    <servlet-class>fr.fidtec.servlets.AdminAccess</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminAccess</servlet-name>
-    <url-pattern>/AdminAccess</url-pattern>
-  </servlet-mapping>
-  
-  <!-- BASIC = mot de passe envoyé en clair
-       DIGEST = mot de passe envoyé en MD5 
-   -->
-   
-  <login-config>
-    <auth-method>BASIC</auth-method>
-    <realm-name>Basic Authentication</realm-name>
-  </login-config>
-  
-  <!-- <login-config> 
-         <auth-method>DIGEST</auth-method>  
-         <realm-name>Digest Authentication</realm-name>  
-  </login-config> -->
-  
-  
-  <security-role>
-	<description>admin role</description>
-	<role-name>admins</role-name>
-  </security-role>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+	id="WebApp_ID" version="5.0">
+	<display-name>POC_JAAS_TOMCAT</display-name>
 
-  <security-role>
-	<description>user role</description>
-	<role-name>users</role-name>
-  </security-role>
-  
-  <security-constraint>
-  	<display-name>Sécurité sous Tomcat</display-name>
-  	
-    <web-resource-collection>
-      <web-resource-name>Simple Web HelloWorld Servlet</web-resource-name>
-      <url-pattern>/HelloWorld</url-pattern>
-    </web-resource-collection>
-    <auth-constraint>
-      <role-name>users</role-name>
-      <role-name>admins</role-name>
-    </auth-constraint>
-    
-    <user-data-constraint>
-		<!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE -->
-		<transport-guarantee>NONE</transport-guarantee>
-	</user-data-constraint>
-		
-  </security-constraint>
-  
-  <security-constraint>
-  	<display-name>Sécurité Admin sous Tomcat</display-name>
-  	
-    <web-resource-collection>
-      <web-resource-name>Admin Servlet</web-resource-name>
-      <url-pattern>/AdminAccess</url-pattern>
-    </web-resource-collection>
-    <auth-constraint>
-      <role-name>admins</role-name>
-    </auth-constraint>
-    
-    <user-data-constraint>
-		<!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE
-		     https://wiki.metawerx.net/wiki/Web.xml.TransportGuarantee -->
-		<transport-guarantee>NONE</transport-guarantee>
-	</user-data-constraint>
-		
-  </security-constraint>
+	<servlet>
+		<description></description>
+		<display-name>HelloWorld</display-name>
+		<servlet-name>HelloWorld</servlet-name>
+		<servlet-class>fr.fidtec.servlets.HelloWorld</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloWorld</servlet-name>
+		<url-pattern>/HelloWorld</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>AdminAccess</display-name>
+		<servlet-name>AdminAccess</servlet-name>
+		<servlet-class>fr.fidtec.servlets.AdminAccess</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminAccess</servlet-name>
+		<url-pattern>/AdminAccess</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>ShowInformations</display-name>
+		<servlet-name>ShowInformations</servlet-name>
+		<servlet-class>fr.fidtec.servlets.ShowInformations</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowInformations</servlet-name>
+		<url-pattern>/ShowInformations</url-pattern>
+	</servlet-mapping>
+	
+	<!-- BASIC = mot de passe envoyé en clair DIGEST = mot de passe envoyé en 
+		MD5 -->
+
+	<!-- <login-config> <auth-method>BASIC</auth-method> <realm-name>Basic
+	Authentication</realm-name> 
+		</login-config> -->
+
+	<login-config>
+		<auth-method>DIGEST</auth-method>
+		<realm-name>Digest Authentication</realm-name>
+	</login-config>
+
+
+	<security-role>
+		<description>admin role</description>
+		<role-name>admins</role-name>
+	</security-role>
+
+	<security-role>
+		<description>user role</description>
+		<role-name>users</role-name>
+	</security-role>
+
+	<security-constraint>
+		<display-name>Sécurité sous Tomcat</display-name>
+
+		<web-resource-collection>
+			<web-resource-name>Simple Web HelloWorld Servlet</web-resource-name>
+			<url-pattern>/HelloWorld</url-pattern>
+			<url-pattern>/ShowInformations</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>users</role-name>
+			<role-name>admins</role-name>
+		</auth-constraint>
+
+		<user-data-constraint>
+			<!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE -->
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+
+	</security-constraint>
+
+	<security-constraint>
+		<display-name>Sécurité Admin sous Tomcat</display-name>
+
+		<web-resource-collection>
+			<web-resource-name>Admin Servlet</web-resource-name>
+			<url-pattern>/AdminAccess</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admins</role-name>
+		</auth-constraint>
+
+		<user-data-constraint>
+			<!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE
+			https://wiki.metawerx.net/wiki/Web.xml.TransportGuarantee -->
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+
+	</security-constraint>
 </web-app>
