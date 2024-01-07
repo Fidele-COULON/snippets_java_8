@@ -40,24 +40,23 @@ public class ShowInformations extends HttpServlet {
 		    // Cookies
 		    out.println("<h1>Cookies</h1>");
 		    
-		    try {
-		    	
-		    	Cookie[] cookies = request.getCookies();
-		    	
+		    Cookie[] cookies = request.getCookies();
+		    
+		    if (cookies != null ) {
 			    for (int i = 0; i < cookies.length; i++) {
 			      String name = cookies[i].getName();
 			      String value = cookies[i].getValue();
 			      out.println(name + " = " + value + "<br>");
 			    }		    
-		    } catch (Exception e) {
-			    out.println("<p>Erreur de recuperation des cookies</p><br>");
+		    } else {    
+			    out.println("<p>Pas de cookies !!! </p>");
 		    }
 		    
 		    // Headers
 		    out.println("<h1>Headers</h1>");
 		    Enumeration<String> headerNames = request.getHeaderNames();
 		    while(headerNames.hasMoreElements()) {
-		    	String headerName = (String)headerNames.nextElement();
+		    	String headerName = headerNames.nextElement();
 		    	out.println(headerName + " = " + request.getHeader(headerName) + "<br>");
 		     }
 		    

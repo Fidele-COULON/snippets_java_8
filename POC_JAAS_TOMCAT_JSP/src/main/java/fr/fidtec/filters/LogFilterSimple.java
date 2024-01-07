@@ -36,13 +36,12 @@ public class LogFilterSimple extends AbstractFidtecFilter {
         // Passez à l'élément suivant (filtre ou cible) en chaîne.
         chain.doFilter(request, response);
         
-        System.out.println("!!!! NE DEVRAIT PAS ETRE EXECUTE !!!!"); //NOSONAR
+        System.out.println("Après le chain de LogFilterSimple"); //NOSONAR
     }
 
 	@Override
 	protected void doSomething() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("doSomething ..."); //NOSONAR
 	}
     
     

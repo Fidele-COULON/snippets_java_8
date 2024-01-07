@@ -29,12 +29,12 @@ public class LogFilterSimple2 implements Filter {
  
         String servletPath = req.getServletPath();
  
-        System.out.println("ICI !!!!"); //NOSONAR
+        System.out.println("ICI : " + servletPath); //NOSONAR
  
         // Passez à l'élément suivant (filtre ou cible) en chaîne.
         chain.doFilter(request, response);
         
-        System.out.println("!!!! NE DEVRAIT PAS NON PLUS ETRE EXECUTE !!!!"); //NOSONAR
+        System.out.println("Après le chain de LogFilterSimple2"); //NOSONAR
     }
  
 }

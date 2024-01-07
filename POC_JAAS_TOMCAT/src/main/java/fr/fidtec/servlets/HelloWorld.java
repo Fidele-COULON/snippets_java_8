@@ -35,6 +35,7 @@ public class HelloWorld extends HttpServlet {
 		pw.println("<br/>UserPrincipalName : " + userName);
 		
 		pw.println("<br/>Role Users : " + request.isUserInRole("users"));
+		pw.println("<br/>Role Users2 : " + request.isUserInRole("users2"));
 		pw.println("<br/>Role Admins : " + request.isUserInRole("admins"));
 		
 		pw.println("<br/>Is HTTPS : " + request.isSecure()); // false

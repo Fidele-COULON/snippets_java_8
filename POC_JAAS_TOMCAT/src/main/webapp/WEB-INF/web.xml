@@ -46,6 +46,11 @@
 	Authentication</realm-name> 
 		</login-config> -->
 
+<!-- 
+	Pas de section auth-constraint sur une ressource : pas de login demandé (sinon login demandé)
+	Pas de section login-config et section auth-constraint sur une ressource : 403 unauthorized
+	Sous Tomcat, les sections security-role sont facultatives (le fichier tomcat-users est utilisé en priorité)
+ -->
 	<login-config>
 		<auth-method>DIGEST</auth-method>
 		<realm-name>Digest Authentication</realm-name>
@@ -70,10 +75,10 @@
 			<url-pattern>/HelloWorld</url-pattern>
 			<url-pattern>/ShowInformations</url-pattern>
 		</web-resource-collection>
-		<auth-constraint>
+	 	<auth-constraint>
 			<role-name>users</role-name>
 			<role-name>admins</role-name>
-		</auth-constraint>
+		</auth-constraint> 
 
 		<user-data-constraint>
 			<!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE -->
