@@ -1,0 +1,19 @@
+<taglib>
+
+   <tlib-version>1.0</tlib-version>
+   <jsp-version>2.0</jsp-version>
+   <short-name>ShowDateWithCase TLD</short-name>
+   <uri>https://www.fidtec.fr</uri>
+   <info>showdatewithcase</info>
+   
+   <tag>
+        <name>ShowDateWithCase</name>
+        <tag-class>fr.fidtec.jsptags.ShowDateWithCaseTag</tag-class>
+        
+        <attribute>
+            <name>showInUpperCase</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+   
+</taglib>

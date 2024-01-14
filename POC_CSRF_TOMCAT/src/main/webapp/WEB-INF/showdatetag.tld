@@ -1,0 +1,21 @@
+<taglib>
+
+   <tlib-version>1.0</tlib-version>
+   <jsp-version>2.0</jsp-version>
+   <short-name>ShowDate TLD</short-name>
+   <uri>https://www.fidtec.fr</uri>
+   <info>showdate</info>
+   
+   <tag>
+		<name>ShowDate</name>
+		<tagclass>fr.fidtec.jsptags.ShowDateTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		
+		<attribute>
+			<name>displayDate</name>
+			<required>true</required>
+		</attribute>
+		
+	</tag>
+	   
+</taglib>

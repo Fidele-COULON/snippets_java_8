@@ -1,0 +1,21 @@
+<taglib>
+
+   <tlib-version>1.0</tlib-version>
+   <jsp-version>2.0</jsp-version>
+   <short-name>LoginTag TLD</short-name>
+   <uri>https://www.fidtec.fr</uri>
+   <info>LoginCSRFForm</info>
+   
+   <tag>
+      <name>LoginCSRFForm</name>
+      <tag-class>fr.fidtec.jsptags.LoginCSRFTag</tag-class>
+        
+      <attribute>
+          <name>action</name>
+          <required>true</required>
+          <rtexprvalue>true</rtexprvalue>
+      </attribute>
+        
+    </tag>
+   
+</taglib>
