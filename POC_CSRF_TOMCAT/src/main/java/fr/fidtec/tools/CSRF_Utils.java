@@ -1,5 +1,6 @@
 package fr.fidtec.tools;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CSRF_Utils {
@@ -9,6 +10,7 @@ public class CSRF_Utils {
 	public static final String CSRF_TOKEN = "CSRFToken";
 	
 	public static String generateCSRFToken() {
-		return CSRF_TOKEN + "_" + new Date().toString();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyy hh:mm");
+		return CSRF_TOKEN + "_" + sdf.format(new Date());
 	}
 }

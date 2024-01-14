@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<!-- Ne fonctionne pas, le Header n'est pas transmis, car une JSP est en réalité câblée avec une servlet --> 
+<!-- Ne fonctionne pas, le Header n'est pas transmis, car une JSP est en réalité câblée avec une servlet, il faut passer par un filtre --> 
  <%
  	response.setHeader(CSRF_Utils.CSRF_TOKEN, "TestCSRF");
  %>
@@ -25,7 +25,7 @@
 	<input type="hidden" name=<%=CSRF_Utils.CSRF_TOKEN%> value="<%=csrfToken%>">
 	<label for="name">Nom&nbsp;:</label>
 	<input type="text" id="name" name="username" />
-    <button type="submit">Envoyer le message via JSP</button>
+    <button type="submit">Envoyer par JSP</button>
 </form>
 
 </body>

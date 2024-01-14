@@ -29,6 +29,9 @@ public class Traitement extends HttpServlet {
 
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+     	PrintWriter pw = response.getWriter();
+		pw.println("<H1> Username brut :" + request.getParameter("username")+ "</H1>"); // passe
+		
     	doStuff(new HttpRequestFilterXSS(request), response);
 	}
     
@@ -38,42 +41,54 @@ public class Traitement extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		PrintWriter pw = response.getWriter();
-		pw.println("<H1>Hello World !!! on " + request.getContextPath() + "</H1>");
 		
 		// Vérification CSRF
 		HttpSession session = request.getSession(true);
 		
-		Object obj = session.getAttribute(CSRF_Utils.CSRF_TOKEN);
-		
-		String tokenfromSession = obj != null ? (String) obj : "Jeton non trouvé" ;
+		// Header
+		pw.println("<h1>GetTokenFromHeader</h1>");
+		String tokenfromHeader = request.getHeader(CSRF_Utils.CSRF_TOKEN);
+		pw.println("tokenfromHeader = " + tokenfromHeader);
+			
+		// tokenfromSession
+		pw.println("<h1>GetTokenfromSession</h1>");
+		Object objAttribute = session.getAttribute(CSRF_Utils.CSRF_TOKEN);
+		String tokenfromSession = objAttribute != null ? (String) objAttribute : "Jeton non trouvé" ;
 		pw.println("tokenfromSession = " + tokenfromSession);
 		
 		pw.println("<br/>");
 		
+		// tokenfromParameter
+		pw.println("<h1>GetTokenfromParameter</h1>");
 		String tokenfromParameter = request.getParameter(CSRF_Utils.CSRF_TOKEN);
 		pw.println("tokenfromParameter = " + tokenfromParameter);
-		
 		pw.println("<br/>");
 		
 		if (tokenfromSession.equals(tokenfromParameter)) {
-			pw.println("Vérification OK");
+			pw.println("Vérification avec session OK");
 		} else {
-			pw.println("Vérification KO");
+			pw.println("Vérification avec session KO");
+		}
+		
+		pw.println("<br/>");
+		
+		if (tokenfromHeader.equals(tokenfromParameter)) {
+			pw.println("Vérification avec header OK");
+		} else {
+			pw.println("Vérification avec header KO");
 		}
 		
 		// Query params
 		pw.println("<h1>Query params</h1>");
 		pw.println("getQueryString = " + request.getQueryString());
 	    
-	    // Query params
-		pw.println("<h1>getParameter user_name modifié par le wrapper</h1>");
+	    // getParameter
+		pw.println("<h1>GetParameter de user_name</h1>");
 		pw.println("getParameter = " + request.getParameter("username"));
-		
-		// Header
-		pw.println("<h1>getHeader</h1>");
-		pw.println("getHeader = " + request.getHeader(CSRF_Utils.CSRF_TOKEN));
 						
      	pw.close();
+     	
+     	
     }
 
 }

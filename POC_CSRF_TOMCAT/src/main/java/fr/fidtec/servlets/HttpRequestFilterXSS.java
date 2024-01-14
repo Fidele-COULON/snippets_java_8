@@ -13,6 +13,6 @@ public class HttpRequestFilterXSS extends HttpServletRequestWrapper {
 
 	@Override
 	public String getParameter(String name) {
-		return super.getParameter(name) + (name.equals(CSRF_Utils.CSRF_TOKEN) ? "" : " filtré XSS");
+		return super.getParameter(name) + (name.equals(CSRF_Utils.CSRF_TOKEN) ? "" : "_filtré XSS");
 	}
 }
