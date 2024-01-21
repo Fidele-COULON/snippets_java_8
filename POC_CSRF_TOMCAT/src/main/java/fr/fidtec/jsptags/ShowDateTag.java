@@ -28,6 +28,7 @@ public class ShowDateTag implements Tag {
 	public int doEndTag() throws JspException {
 		return EVAL_PAGE;
 	}
+	
 	@Override
 	public int doStartTag() throws JspException {
 		
