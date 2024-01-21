@@ -36,7 +36,7 @@ public class LogFilterSimple extends AbstractFidtecFilter {
         // Passez à l'élément suivant (filtre ou cible) en chaîne.
         chain.doFilter(request, response);
         
-        System.out.println("Après le chain de LogFilterSimple"); //NOSONAR
+        System.out.println("Après le chain de " + LogFilterSimple2.class.getClass().getSimpleName()); //NOSONAR
     }
 
 	@Override

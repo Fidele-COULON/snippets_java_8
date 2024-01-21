@@ -34,7 +34,6 @@ public class LogFilterSimple2 implements Filter {
         // Passez à l'élément suivant (filtre ou cible) en chaîne.
         chain.doFilter(request, response);
         
-        System.out.println("Après le chain de LogFilterSimple2"); //NOSONAR
+        System.out.println("Après le chain de " + LogFilterSimple2.class.getClass().getSimpleName()); //NOSONAR
     }
- 
 }
