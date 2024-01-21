@@ -1,4 +1,4 @@
-package fr.fidtec.POC_Log4j1; //NOSONAR
+package fr.fidtec.log4j1; 
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.MDC; // MDC = Mapped Diagnostic Context

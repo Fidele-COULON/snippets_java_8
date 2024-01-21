@@ -9,9 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 // https://logging.apache.org/log4j/2.x/log4j-slf4j-impl/
-public class UseSLF4J_Log4j2 { //NOSONAR
+public class UseSLF4JWithLog4j2 { //NOSONAR
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(UseSLF4J_Log4j2.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(UseSLF4JWithLog4j2.class);
 	
 	private static final String NOM_FICHIER_CONFIG_LOG4J2 =  "src/main/resources/syslogAppender/log4j2.xml";
 	

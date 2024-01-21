@@ -20,19 +20,19 @@
 
   <dependencies>
    
-    <!-- <dependency>
+     <dependency>
 		<groupId>log4j</groupId>
 		<artifactId>log4j</artifactId>
 		<version>1.2.17</version>
-	</dependency> -->
+	</dependency> 
 
 	<!-- https://mvnrepository.com/artifact/ch.qos.reload4j/reload4j 
 		reload4j is a drop-in replacement for log4j 1.2.17  (EOLed = end of life)-->
-	<dependency>
+	<!--<dependency>
 	    <groupId>ch.qos.reload4j</groupId>
 	    <artifactId>reload4j</artifactId>
 	    <version>${reload4j.version}</version>
-	</dependency>
+	</dependency>-->
 
 	<dependency>
         <groupId>org.slf4j</groupId>

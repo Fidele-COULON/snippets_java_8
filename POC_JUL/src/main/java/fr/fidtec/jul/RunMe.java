@@ -60,9 +60,7 @@ public class RunMe {
     }
 	
 	public static void main(String[] args) {
-		
-		System.out.println("Bienvenue avec JUL !!!");
-		
+			
 		LOGGER.setLevel(Level.ALL);
 		
 		LOGGER.fine("Coucou en fine !");
