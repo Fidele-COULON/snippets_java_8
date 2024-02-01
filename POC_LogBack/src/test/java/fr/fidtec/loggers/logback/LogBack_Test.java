@@ -1,4 +1,4 @@
-package fr.fidtec.loggers;
+package fr.fidtec.loggers.logback;
 
 import static org.junit.Assert.assertTrue;
 
@@ -10,22 +10,47 @@ import ch.qos.logback.classic.Level;
 
 public class LogBack_Test {
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(LogBack_Test.class);
+	
+	private static final int MAX_LOOP = 10000;
+	
 	@Test
-	public void Sample_Test() {
-		final Logger logger = LoggerFactory.getLogger(LogBack_Test.class);
-		logger.info("Example log from {}", LogBack_Test.class.getSimpleName());
+	public void SampleLogger_Test() {
+		
+		LOGGER.trace("Hello World !!!! en mode trace");
+		LOGGER.debug("Hello World !!!! en mode debug");
+		LOGGER.info("Hello World !!!! en mode info");
+		LOGGER.error("Hello World !!!! en mode error");
+		LOGGER.warn("Hello World !!!! en mode warn");
+				
+		assertTrue(true); // pour SONAR
+	}
+	
+	@Test
+	public void SampleLoggerWithFormatter_Test() {
+		
+		LOGGER.info("Example log from {}", LogBack_Test.class.getSimpleName());
+		
+		assertTrue(true); // pour SONAR
+	}
+	
+	@Test
+	public void SampleLoggerWithException_Test() {
+				
+		LOGGER.error("Hello World !!!! en mode error", new Exception("C'est une exception"));		
+		
 		assertTrue(true); // pour SONAR
 	}
 	
 	@Test
 	public void LogLevel_Test() {
 		
-		ch.qos.logback.classic.Logger parentLogger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("fr.fidtec.loggers");
+		ch.qos.logback.classic.Logger parentLogger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("fr.fidtec.loggers.logback");
 
 		// A Logback context is needed to set the level in the next statement; note that the SLF4J's abstract logger does not implement setLevel().
 		parentLogger.setLevel(Level.INFO);
 
-	    Logger childlogger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("fr.fidtec.loggers.tests");
+	    Logger childlogger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("fr.fidtec.loggers.logbakc.tests");
 
 		parentLogger.warn("This message is logged because WARN > INFO.");
 		parentLogger.debug("This message is not logged because DEBUG < INFO.");
@@ -39,7 +64,7 @@ public class LogBack_Test {
 	@Test
 	public void rootLogger_Test() {
 		
-		ch.qos.logback.classic.Logger logger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("fr.fidtec.loggers");
+		ch.qos.logback.classic.Logger logger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("fr.fidtec.loggers.logback");
 		logger.debug("Hi there!");
 
 		ch.qos.logback.classic.Logger rootLogger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
@@ -53,33 +78,14 @@ public class LogBack_Test {
 		assertTrue(true); // pour SONAR
 	}
 	
-	@Test
-	public void LogWithException_Test() {
-		final Logger logger = LoggerFactory.getLogger(LogBack_Test.class);
-		
-		String message = "This is a String";
-		Integer zero = 0;
-
-		try {
-		    logger.debug("Logging message: {}", message);
-		    logger.debug("Going to divide {} by {}", 42, zero);
-		    
-		    @SuppressWarnings("unused")
-			int result = 42 / zero;
-		} catch (Exception e) {
-		    logger.error("Error dividing {} by {} ", 42, zero, e);
-		}
-		
-		assertTrue(true); // pour SONAR
-	}
+	
 	
 	// https://mkyong.com/logging/logback-xml-example/
 	@Test
 	public void MassLogging_Test() {
-		final Logger logger = LoggerFactory.getLogger(LogBack_Test.class);
-		
-	    for (int i = 0; i <= 100000; i++) {
-	    	logger.info("Coucou !!!!");
+
+		for (int i = 0; i < MAX_LOOP; i++) {
+	    	LOGGER.info("Coucou #" + i + " !");
 	    }
 	    
 	    assertTrue(true); // pour SONAR
