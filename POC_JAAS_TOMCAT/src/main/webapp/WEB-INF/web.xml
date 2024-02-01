@@ -39,11 +39,9 @@
 		<url-pattern>/ShowInformations</url-pattern>
 	</servlet-mapping>
 	
-	<!-- BASIC = mot de passe envoyé en clair DIGEST = mot de passe envoyé en 
-		MD5 -->
+	<!-- BASIC = mot de passe envoyé en clair DIGEST = mot de passe envoyé en MD5 -->
 
-	<!-- <login-config> <auth-method>BASIC</auth-method> <realm-name>Basic
-	Authentication</realm-name> 
+	<!-- <login-config> <auth-method>BASIC</auth-method> <realm-name>Basic 	Authentication</realm-name> 
 		</login-config> -->
 
 <!-- 
