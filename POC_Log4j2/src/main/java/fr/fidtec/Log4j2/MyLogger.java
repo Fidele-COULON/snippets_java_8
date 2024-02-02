@@ -8,7 +8,6 @@ public class MyLogger extends Logger {
 
 	protected MyLogger(LoggerContext context, String name, MessageFactory messageFactory) {
 		super(context, name, messageFactory);
-		// TODO Auto-generated constructor stub
 	}
 
 }

@@ -67,6 +67,7 @@ public class LDAPCnx_Test {
 	      System.out.print(attr.get() + ": ");
 	      attr = attrs.get("mail");
 	      System.out.println(attr.get());
+	    }
 	}
 	
 }

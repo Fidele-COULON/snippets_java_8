@@ -22,5 +22,9 @@ local.properties
 .classpath
 .settings/**
 
+*/.classpath
+*/.settings/*
+*/bin/**
+
 # Locally stored "Eclipse launch configurations"
 *.launch
