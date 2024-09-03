@@ -10,16 +10,16 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
  
-public class LogFilterSimple extends AbstractFidtecFilter {
+public class LogFilterSimple1 extends AbstractFidtecFilter {
   
     @Override
     public void init(FilterConfig fConfig) throws ServletException {
-        System.out.println(LogFilterSimple.class.getSimpleName() + " init !!"); //NOSONAR
+        System.out.println(LogFilterSimple1.class.getSimpleName() + " init !!"); //NOSONAR
     }
  
     @Override
     public void destroy() {
-        System.out.println(LogFilterSimple.class.getSimpleName() + " destroy !!"); //NOSONAR
+        System.out.println(LogFilterSimple1.class.getSimpleName() + " destroy !!"); //NOSONAR
     }
  
     @Override
@@ -36,7 +36,7 @@ public class LogFilterSimple extends AbstractFidtecFilter {
         // Passez à l'élément suivant (filtre ou cible) en chaîne.
         chain.doFilter(request, response);
         
-        System.out.println("Après le chain de " + LogFilterSimple2.class.getClass().getSimpleName()); //NOSONAR
+        System.out.println("Après le chain de " + LogFilterSimple1.class.getSimpleName()); //NOSONAR
     }
 
 	@Override

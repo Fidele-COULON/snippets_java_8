@@ -6,6 +6,15 @@
    		<welcome-file>HelloWorld</welcome-file>    
   	</welcome-file-list>  
   
+    <!--  https://stackoverflow.com/questions/877064/changing-cookie-jsessionid-name -->
+    <!--  HttpOnly empêche d’accéder aux cookies en Javascript -->
+    <!--  Secure empêche d’accéder aux cookies sans HTTPS -->
+  	<session-config>
+    	<cookie-config>
+        	<name>JSESSIONID_FIDTEC</name>
+    	</cookie-config>
+	</session-config>
+
 	<servlet>
 		<description></description>
 		<display-name>HelloWorld</display-name>
@@ -16,6 +25,7 @@
 		<servlet-name>HelloWorld</servlet-name>
 		<url-pattern>/HelloWorld</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<description></description>
 		<display-name>AdminAccess</display-name>
@@ -26,6 +36,7 @@
 		<servlet-name>AdminAccess</servlet-name>
 		<url-pattern>/AdminAccess</url-pattern>
 	</servlet-mapping>
+	
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<form-login-config>
@@ -33,14 +44,17 @@
 			<form-error-page>/Error.jsp</form-error-page>
 		</form-login-config>
 	</login-config>
+	
 	<security-role>
 		<description>admin role</description>
 		<role-name>admins</role-name>
 	</security-role>
+	
 	<security-role>
 		<description>user role</description>
 		<role-name>users</role-name>
 	</security-role>
+	
 	<security-constraint>
 		<display-name>Sécurité sous Tomcat</display-name>
 		<web-resource-collection>
@@ -56,6 +70,7 @@
 			<transport-guarantee>NONE</transport-guarantee>
 		</user-data-constraint>
 	</security-constraint>
+	
 	<security-constraint>
 		<display-name>Sécurité Admin sous Tomcat</display-name>
 		<web-resource-collection>
@@ -76,6 +91,7 @@
 		<servlet-name>Logout</servlet-name>
 		<servlet-class>fr.fidtec.servlets.Logout</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>Logout</servlet-name>
 		<url-pattern>/Logout</url-pattern>
@@ -87,17 +103,18 @@
 		<servlet-name>ShowInformations</servlet-name>
 		<servlet-class>fr.fidtec.servlets.ShowInformations</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>ShowInformations</servlet-name>
 		<url-pattern>/ShowInformations</url-pattern>
 	</servlet-mapping>
 
 	<filter>
-		<filter-name>logFilterSimple</filter-name>
-		<filter-class>fr.fidtec.filters.LogFilterSimple</filter-class>
+		<filter-name>logFilterSimple1</filter-name>
+		<filter-class>fr.fidtec.filters.LogFilterSimple1</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>logFilterSimple</filter-name>
+		<filter-name>logFilterSimple1</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
