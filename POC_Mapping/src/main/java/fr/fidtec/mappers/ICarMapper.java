@@ -5,12 +5,11 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import org.mapstruct.ReportingPolicy;
-import org.mapstruct.ValueMapping;
 
 import fr.fidtec.beans.Car;
-import fr.fidtec.beans.CarColor;
 import fr.fidtec.beans.CarDTO;
 
+// https://www.baeldung.com/mapstruct
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ICarMapper {
 

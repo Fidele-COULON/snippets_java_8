@@ -4,7 +4,7 @@ public class RemoteServiceTestSimulator {
 
 	private long wait;
 
-    public RemoteServiceTestSimulator(long wait) throws InterruptedException {
+    public RemoteServiceTestSimulator(long wait) {
         this.wait = wait;
     }
 

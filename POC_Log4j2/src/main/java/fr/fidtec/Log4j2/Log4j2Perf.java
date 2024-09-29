@@ -1,4 +1,4 @@
-package fr.fidtec.Log4j2;
+package fr.fidtec.log4j2;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

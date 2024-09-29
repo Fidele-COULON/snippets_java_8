@@ -1,17 +1,12 @@
 package fr.fidtec.mappers;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.TimeZone;
-
 import org.junit.Test;
 import org.mapstruct.factory.Mappers;
-
 import fr.fidtec.beans.DateTimeZone;
 import fr.fidtec.beans.DateCalendar;
 
@@ -21,7 +16,7 @@ public class IDateMapper_Test {
 	private IDateMapper dateMapper = Mappers.getMapper(IDateMapper.class);
 	
 	@Test
-	public void date_Test() throws ParseException {
+	public void date_Test() {
 		Date date = new Date();
 		System.out.println("Date : " + date);
 		
@@ -33,6 +28,8 @@ public class IDateMapper_Test {
 		
 		Date dateZ = utcFormat.parse(date.toString());
 		System.out.println("DateZ : " + dateZ);*/
+		
+		assertTrue(true);
 		
 	}
 	

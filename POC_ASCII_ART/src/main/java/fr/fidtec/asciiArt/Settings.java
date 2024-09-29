@@ -1,4 +1,4 @@
-package fr.fidtec.asciiArt;
+package fr.fidtec.asciiart;
 
 import java.awt.Font;
 

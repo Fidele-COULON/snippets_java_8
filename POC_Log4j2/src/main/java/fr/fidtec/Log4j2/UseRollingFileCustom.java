@@ -1,4 +1,4 @@
-package fr.fidtec.Log4j2;
+package fr.fidtec.log4j2;
 
 import java.io.File;
 

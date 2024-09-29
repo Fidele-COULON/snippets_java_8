@@ -1,4 +1,4 @@
-package fr.fidtec.Log4j2; //NOSONAR
+package fr.fidtec.log4j2; //NOSONAR
 
 import java.io.File;
 import java.util.Map;

@@ -1,6 +1,6 @@
-package fr.fidtec.asciiArt;
+package fr.fidtec.asciiart;
 
-public enum ASCIIArtFont {
+public enum AsciiArtFont {
 	
 	ART_FONT_DIALOG("Dialog"),
 	ART_FONT_DIALOG_INPUT("DialogInput"), 
@@ -14,7 +14,7 @@ public enum ASCIIArtFont {
         return value;
     }
 
-    private ASCIIArtFont(String value) {
+    private AsciiArtFont(String value) {
         this.value = value;
     }
 }

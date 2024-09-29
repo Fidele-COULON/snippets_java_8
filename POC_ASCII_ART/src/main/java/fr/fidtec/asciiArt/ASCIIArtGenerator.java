@@ -1,4 +1,4 @@
-package fr.fidtec.asciiArt;
+package fr.fidtec.asciiart;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,9 +7,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-public class ASCIIArtGenerator {
+public class AsciiArtGenerator {
 
-	private ASCIIArtGenerator() {} // pour éviter l'instanciation
+	private AsciiArtGenerator() {} // pour éviter l'instanciation
 	
 	public static final int ART_SIZE_SMALL = 12;
     public static final int ART_SIZE_MEDIUM = 18;
@@ -28,7 +28,7 @@ public class ASCIIArtGenerator {
      * @throws Exception
      */
     public static String printTextArt(String artText, int textHeight) {
-        return printTextArt(artText, textHeight, ASCIIArtFont.ART_FONT_DIALOG, DEFAULT_ART_SYMBOL, false, 0);
+        return printTextArt(artText, textHeight, AsciiArtFont.ART_FONT_DIALOG, DEFAULT_ART_SYMBOL, false, 0);
     }
  
     /**
@@ -40,7 +40,7 @@ public class ASCIIArtGenerator {
      * @param artSymbol - Specify the character for printing the ascii art
      * @throws Exception
      */
-    public static String printTextArt(String artText, int textHeight, ASCIIArtFont fontType, String artSymbol, boolean inversion, int paddingChar) {
+    public static String printTextArt(String artText, int textHeight, AsciiArtFont fontType, String artSymbol, boolean inversion, int paddingChar) {
         
     	// paddingChar 
     	String padding = new String(new char[paddingChar]).replace('\0', ' ');
