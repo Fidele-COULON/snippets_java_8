@@ -14,7 +14,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
 	<maven.compiler.target>1.8</maven.compiler.target>
-	<aspectj.version>1.8.13</aspectj.version> 
+	<aspectj.version>1.9.22.1</aspectj.version> 
   </properties>
 
   <dependencies>
@@ -39,96 +39,35 @@
     </dependency>
     
   </dependencies>
+  
   <build>
-      <plugins>
-      
-         <plugin>
-             <groupId>org.codehaus.mojo</groupId>
-             <artifactId>aspectj-maven-plugin</artifactId>
-             <version>1.11</version>
-   
-             <executions>
-                 <execution>
-                     <goals>
-                         <goal>compile</goal> <!-- use this goal to weave all your main classes -->
-                         <goal>test-compile</goal> <!-- use this goal to weave all your test classes -->
-                     </goals>
-                 </execution>
-             </executions>
-             <configuration>
-                 <complianceLevel>${maven.compiler.source}</complianceLevel>
-                 <source>${maven.compiler.source}</source>
-                 <target>${maven.compiler.target}</target>
-                 <showWeaveInfo>true</showWeaveInfo>
-        		 <verbose>true</verbose>
-        		 <Xlint>ignore</Xlint>
-        		 <encoding>UTF-8 </encoding>
-             </configuration>
-             
-         </plugin>
-         
-         <plugin>
-             <groupId>org.apache.maven.plugins</groupId>
-             <artifactId>maven-compiler-plugin</artifactId>
-             <version>2.5.1</version>
-             <configuration>
-                 <source>${maven.compiler.source}</source>
-                 <target>${maven.compiler.target}</target>
-             </configuration>
-         </plugin>
-         
-         <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>fr.fidtec.beans.RunMe</mainClass> <!--  mvn exec:java CAR AOP ne fonctionne pas en Run\Java Application si pas de mvn install préalable -->
-                </configuration>
-          </plugin>
-            
-     </plugins>
-      <pluginManagement>
-      	<plugins>
-      		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-      		<plugin>
-      			<groupId>org.eclipse.m2e</groupId>
-      			<artifactId>lifecycle-mapping</artifactId>
-      			<version>1.0.0</version>
-      			<configuration>
-      				<lifecycleMappingMetadata>
-      					<pluginExecutions>
-      						<pluginExecution>
-      							<pluginExecutionFilter>
-      								<groupId>
-      									org.codehaus.mojo
-      								</groupId>
-      								<artifactId>
-      									aspectj-maven-plugin
-      								</artifactId>
-      								<versionRange>
-      									[1.11,)
-      								</versionRange>
-      								<goals>
-      									<goal>compile</goal>
-      									<goal>test-compile</goal>
-      								</goals>
-      							</pluginExecutionFilter>
-      							<action>
-      								<ignore></ignore>
-      							</action>
-      						</pluginExecution>
-      					</pluginExecutions>
-      				</lifecycleMappingMetadata>
-      			</configuration>
-      		</plugin>
-      	</plugins>
-      </pluginManagement>
+  	<plugins>
+		<plugin>
+		    <groupId>org.codehaus.mojo</groupId>
+		    <artifactId>aspectj-maven-plugin</artifactId>
+		    <version>1.14.0</version>
+		    
+		    <configuration>
+		        <complianceLevel>1.8</complianceLevel>
+		        <source>1.8</source>
+		        <target>1.8</target>
+		        <showWeaveInfo>true</showWeaveInfo>
+		        <verbose>true</verbose>
+		        <Xlint>ignore</Xlint>
+		        <encoding>UTF-8 </encoding>
+		    </configuration>
+		    
+		    <executions>
+		        <execution>
+		            <goals>
+		                <!-- use this goal to weave all your main classes -->
+		                <goal>compile</goal>
+		                <!-- use this goal to weave all your test classes -->
+		                <goal>test-compile</goal>
+		            </goals>
+		        </execution>
+		    </executions>
+		</plugin>
+  	</plugins>
   </build>
 </project>

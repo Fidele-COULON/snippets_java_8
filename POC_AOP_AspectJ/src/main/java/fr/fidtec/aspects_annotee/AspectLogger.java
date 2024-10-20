@@ -17,12 +17,12 @@ public class AspectLogger {
     }
 
     @Before("defineEntryPoint()")
-    public void aaa(JoinPoint joinPoint) {
+    public void beforeJoinPoint(JoinPoint joinPoint) {
         System.out.println("AspectLogger - Before"); //NOSONAR
     }
 
     @After("defineEntryPoint()")
-    public void bbb(JoinPoint joinPoint) {
+    public void afterJoinPoint(JoinPoint joinPoint) {
         System.out.println("AspectLogger - After"); //NOSONAR
     }
     
